@@ -35,6 +35,14 @@
             return "iOS";
         }
 
+        if (currentLowerUA.indexOf("iphone") >= 0) {
+            return "iOS";
+        }
+
+        if (currentLowerUA.indexOf("ipad") >= 0) {
+            return "iOS";
+        }
+
         // BlackBerry
         if (currentLowerUA.indexOf("blackberry") >= 0) {
             return "BlackBerry";
@@ -59,5 +67,7 @@
         if (currentLowerUA.indexOf("openbsd") >= 0) {
             return "OpenBSD";
         }
+
+        return "Firefox OS";
     }
 })(UATOOLS || (UATOOLS = {}));
