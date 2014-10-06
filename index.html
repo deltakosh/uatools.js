@@ -2,28 +2,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>uatools.js test page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
     <script src="uatools.js"></script>
+
     <style>
-        * {
-            font-family: Arial;
+        .row {
+            background-color: #eee;
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid #ddd;
+            border: 1px solid rgba(86,61,124,.2);
+        }
+
+        [class*="col-"] {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .col-md-3 {
+            text-align: right;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .head {
+            font-weight: bolder;
         }
     </style>
 </head>
 <body>
-    <h1>uatools.js test page</h1>
-    <p>
-        <div id="currentUA"></div>
-    </p>
-    <p>
-        <div id="isMobile"></div>
-    </p>
-    <p>
-        <div id="OS"></div>
-    </p>
+    <div class="container">
+        <h1>uatools.js</h1>
+        <div class="row">
+            <div class="col-xs-3 col-md-3 head">Complete UA</div>
+            <div class="col-xs-9 col-md-9" id="currentUA"></div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-3 col-md-3 head">Mobile status</div>
+            <div class="col-xs-9 col-md-9" id="isMobile"></div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-3 col-md-3 head">Operating system</div>
+            <div class="col-xs-9 col-md-9" id="OS"></div>
+        </div>
+    </div>
     <script>
         document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
         document.getElementById("isMobile").innerHTML = UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
-        document.getElementById("OS").innerHTML = "Operating system:" + UATOOLS.GetOperatingSystem();
+        document.getElementById("OS").innerHTML = UATOOLS.GetOperatingSystem();
     </script>
 </body>
 </html>
