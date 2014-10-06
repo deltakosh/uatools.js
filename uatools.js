@@ -53,6 +53,11 @@
         }
 
         // BlackBerry
+        if (currentLowerUA.indexOf("(bb") >= 0) {
+            return "BlackBerry";
+        }
+
+        // Kindle
         if (currentLowerUA.indexOf("kindle") >= 0) {
             return "Kindle";
         }
