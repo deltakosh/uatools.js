@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>uatools.js test page</title>
+    <script src="uatools.js"></script>
+    <style>
+        * {
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>uatools.js test page</h1>
+    <p>
+        <div id="currentUA"></div>
+    </p>
+    <p>
+        <div id="isMobile"></div>
+    </p>
+    <p>
+        <div id="OS"></div>
+    </p>
+    <script>
+        document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
+        document.getElementById("isMobile").innerHTML = UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
+        document.getElementById("OS").innerHTML = "Operating system:" + UATOOLS.GetOperatingSystem();
+    </script>
+</body>
+</html>
