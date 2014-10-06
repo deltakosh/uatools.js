@@ -7,8 +7,8 @@ You can try it live just [here](www.catuhe.com/uatools)
 
 Once referenced, uatools.js allows you to call:
 * UATOOLS.GetOperatingSystem()
-* UATOOLS.IsMObile()
-
+* UATOOLS.IsMobile()
+* UATOOLS.IsTablet()
 
 Feel free to contribute to get even more accurate results!
 

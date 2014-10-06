@@ -59,7 +59,7 @@
     </div>
     <script>
         document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
-        document.getElementById("isMobile").innerHTML = UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
+        document.getElementById("isMobile").innerHTML = UATOOLS.IsTablet() ? "Running on tablet device" : UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
         document.getElementById("OS").innerHTML = UATOOLS.GetOperatingSystem();
     </script>
 </body>

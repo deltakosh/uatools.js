@@ -6,6 +6,10 @@
     var currentLowerUA = currentUA.toLowerCase();
 
     // Features
+    UATOOLS.IsTablet = function () {
+        return currentLowerUA.indexOf("tablet") >= 0;
+    }
+
     UATOOLS.IsMobile = function() {
         return currentLowerUA.indexOf("mobile") >= 0;
     }
