@@ -72,6 +72,6 @@
             return "OpenBSD";
         }
 
-        return "Firefox OS";
+        return "Firefox OS"; // Web is the plaform
     }
 })(UATOOLS || (UATOOLS = {}));
