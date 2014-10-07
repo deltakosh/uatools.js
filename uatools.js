@@ -18,15 +18,10 @@
         return currentUA;
     }
 
-    UATOOLS.GetOperatingSystem = function() {
+    UATOOLS.GetOperatingSystem = function () {
         // Windows Phone
         if (currentLowerUA.indexOf("windows phone") >= 0) {
             return "Windows Phone";
-        }
-
-        // Windows
-        if (currentLowerUA.indexOf("windows") >= 0) {
-            return "Windows";
         }
 
         // Android
@@ -45,6 +40,11 @@
 
         if (currentLowerUA.indexOf("ipad") >= 0) {
             return "iOS";
+        }
+
+        // Windows
+        if (currentLowerUA.indexOf("windows") >= 0) {
+            return "Windows";
         }
 
         // BlackBerry
@@ -77,6 +77,11 @@
             return "OpenBSD";
         }
 
-        return "Firefox OS"; // Web is the plaform
+        // Firefox OS
+        if (currentLowerUA.indexOf("firefox") >= 0) {
+            return "Firefox OS"; // Web is the plaform
+        }
+
+        return "Unknown operating system";
     }
 })(UATOOLS || (UATOOLS = {}));
