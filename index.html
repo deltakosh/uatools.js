@@ -53,6 +53,11 @@
         </div>
         <hr />
         <div class="row">
+            <div class="col-xs-3 col-md-3 head">Store</div>
+            <div class="col-xs-9 col-md-9" id="store"></div>
+        </div>
+        <hr />
+        <div class="row">
             <div class="col-xs-3 col-md-3 head">Operating system</div>
             <div class="col-xs-9 col-md-9" id="OS"></div>
         </div>
@@ -60,6 +65,7 @@
     <script>
         document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
         document.getElementById("isMobile").innerHTML = UATOOLS.IsTablet() ? "Running on tablet device" : UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
+        document.getElementById("store").innerHTML = UATOOLS.GetStore();
         document.getElementById("OS").innerHTML = UATOOLS.GetOperatingSystem();
     </script>
 </body>

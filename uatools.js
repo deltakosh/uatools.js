@@ -10,7 +10,7 @@
         return currentLowerUA.indexOf("tablet") >= 0;
     }
 
-    UATOOLS.IsMobile = function() {
+    UATOOLS.IsMobile = function () {
         return currentLowerUA.indexOf("mobile") >= 0;
     }
 
@@ -18,7 +18,28 @@
         return currentUA;
     }
 
-    UATOOLS.GetOperatingSystem = function() {
+    UATOOLS.GetStore = function () {
+        // Features testing first
+        if (window.chrome && window.chrome.app) {
+            return "Google Play";
+        }
+
+        // Get OS then
+        var os = UATOOLS.GetOperatingSystem();
+
+        switch (os) {
+            case "Windows Phone":
+                return "Windows Phone Store";
+            case "Windows":
+                return "Windows Store";
+            case "iOS":
+                return "iTunes"; // Smart App Banner should be used as well
+            default:
+                return os;
+        }
+    }
+
+    UATOOLS.GetOperatingSystem = function () {
         // Windows Phone
         if (currentLowerUA.indexOf("windows phone") >= 0) {
             return "Windows Phone";
