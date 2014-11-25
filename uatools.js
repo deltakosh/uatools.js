@@ -98,6 +98,11 @@
             return "OpenBSD";
         }
 
-        return "Firefox OS"; // Web is the plaform
+        // Firefox OS
+        if (currentLowerUA.indexOf("firefox") >= 0) {
+            return "Firefox OS"; // Web is the plaform
+        }
+
+        return "Unknown operating system";
     }
 })(UATOOLS || (UATOOLS = {}));
