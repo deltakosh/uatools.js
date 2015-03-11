@@ -1,29 +1,39 @@
 ﻿var UATOOLS = (function (UATOOLS) {
     var currentUA = navigator.userAgent || "";
-
     var currentLowerUA = currentUA.toLowerCase();
 
-    // Features
-    UATOOLS.IsTablet = function () {
+    function deprecated(newFunction) {
+        return function () {
+            if (console && console.warn) {
+                console.log('This method is deprecated!');
+            }
+            return newFunction.call(this, arguments);
+        }
+    }
+
+    UATOOLS.isTablet = function () {
         return currentLowerUA.indexOf("tablet") >= 0;
     };
+    UATOOLS.IsTablet = deprecated(UATOOLS.isTablet);
 
-    UATOOLS.IsMobile = function () {
+    UATOOLS.isMobile = function () {
         return currentLowerUA.indexOf("mobile") >= 0;
     };
+    UATOOLS.IsMobile = deprecated(UATOOLS.isMobile);
 
-    UATOOLS.GetUserAgentString = function () {
+    UATOOLS.getUserAgentString = function () {
         return currentUA;
     };
+    UATOOLS.GetUserAgentString = deprecated(UATOOLS.getUserAgentString);
 
-    UATOOLS.GetStore = function () {
+    UATOOLS.getStore = function () {
         // Features testing first
         if (window.chrome && window.chrome.app) {
             return "Google Play";
         }
 
         // Get OS then
-        var os = UATOOLS.GetOperatingSystem();
+        var os = UATOOLS.getOperatingSystem();
 
         switch (os) {
             case "Windows Phone":
@@ -36,8 +46,9 @@
                 return os;
         }
     };
+    UATOOLS.GetStore = deprecated(UATOOLS.getStore);
 
-    UATOOLS.GetOperatingSystem = function () {
+    UATOOLS.getOperatingSystem = function () {
         // Windows Phone
         if (currentLowerUA.indexOf("windows phone") >= 0) {
             return "Windows Phone";
@@ -103,6 +114,7 @@
 
         return "Unknown operating system";
     };
+    UATOOLS.GetOperatingSystem = deprecated(UATOOLS.getOperatingSystem);
 
     return UATOOLS;
 }(UATOOLS || {}));

@@ -12,10 +12,10 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 14px;;
+            font-size: 14px;
         }
 
         h1 {
@@ -87,10 +87,10 @@
     </div>
 
     <script>
-        document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
-        document.getElementById("isMobile").innerHTML = UATOOLS.IsTablet() ? "Running on tablet device" : UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
-        document.getElementById("store").innerHTML = UATOOLS.GetStore();
-        document.getElementById("OS").innerHTML = UATOOLS.GetOperatingSystem();
+        document.getElementById("currentUA").innerHTML = UATOOLS.getUserAgentString();
+        document.getElementById("isMobile").innerHTML = UATOOLS.isTablet() ? "Running on tablet device" : UATOOLS.isMobile() ? "Running on mobile device" : "Running on desktop device";
+        document.getElementById("store").innerHTML = UATOOLS.getStore();
+        document.getElementById("OS").innerHTML = UATOOLS.getOperatingSystem();
     </script>
 </body>
 </html>
