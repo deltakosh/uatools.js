@@ -1,6 +1,4 @@
-﻿var UATOOLS;
-
-(function (UATOOLS) {
+﻿var UATOOLS = (function (UATOOLS) {
     var currentUA = navigator.userAgent || "";
 
     var currentLowerUA = currentUA.toLowerCase();
@@ -8,15 +6,15 @@
     // Features
     UATOOLS.IsTablet = function () {
         return currentLowerUA.indexOf("tablet") >= 0;
-    }
+    };
 
     UATOOLS.IsMobile = function () {
         return currentLowerUA.indexOf("mobile") >= 0;
-    }
+    };
 
     UATOOLS.GetUserAgentString = function () {
         return currentUA;
-    }
+    };
 
     UATOOLS.GetStore = function () {
         // Features testing first
@@ -37,7 +35,7 @@
             default:
                 return os;
         }
-    }
+    };
 
     UATOOLS.GetOperatingSystem = function () {
         // Windows Phone
@@ -104,5 +102,7 @@
         }
 
         return "Unknown operating system";
-    }
-})(UATOOLS || (UATOOLS = {}));
+    };
+
+    return UATOOLS;
+}(UATOOLS || {}));
