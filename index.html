@@ -1,41 +1,64 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>uatools.js test page</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
 
     <script src="uatools.js"></script>
 
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        @media screen and (min-width: 700px) {
+            .container {
+                max-width: 95%;
+                margin: 0 auto;
+            }
+        }
+
         .row {
-            background-color: #eee;
-            background-color: rgba(86,61,124,.15);
-            border: 1px solid #ddd;
-            border: 1px solid rgba(86,61,124,.2);
+            background-color: rgb(230, 226, 235);
+            border: 1px solid rgb(221, 216, 229);
+            overflow: hidden;
         }
 
-        [class*="col-"] {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-
-        .col-md-3 {
+        .caption {
+            float: left;
             text-align: right;
+            width: 25%;
+            font-weight: bold;
+        }
+
+        .detected-value {
+            float: left;
+            width: 75%;
+        }
+
+        .caption, .detected-value {
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         hr {
             margin-top: 20px;
             margin-bottom: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .head {
-            font-weight: bolder;
+            border: none;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
@@ -43,25 +66,26 @@
     <div class="container">
         <h1>uatools.js</h1>
         <div class="row">
-            <div class="col-xs-3 col-md-3 head">Complete UA</div>
-            <div class="col-xs-9 col-md-9" id="currentUA"></div>
+            <div class="caption">Complete UA</div>
+            <div id="currentUA" class="detected-value"></div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-xs-3 col-md-3 head">Mobile status</div>
-            <div class="col-xs-9 col-md-9" id="isMobile"></div>
+            <div class="caption">Mobile status</div>
+            <div id="isMobile" class="detected-value"></div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-xs-3 col-md-3 head">Store</div>
-            <div class="col-xs-9 col-md-9" id="store"></div>
+            <div class="caption">Store</div>
+            <div id="store" class="detected-value"></div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-xs-3 col-md-3 head">Operating system</div>
-            <div class="col-xs-9 col-md-9" id="OS"></div>
+            <div class="caption">Operating system</div>
+            <div id="OS" class="detected-value"></div>
         </div>
     </div>
+
     <script>
         document.getElementById("currentUA").innerHTML = UATOOLS.GetUserAgentString();
         document.getElementById("isMobile").innerHTML = UATOOLS.IsTablet() ? "Running on tablet device" : UATOOLS.IsMobile() ? "Running on mobile device" : "Running on desktop device";
