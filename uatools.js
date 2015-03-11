@@ -1,120 +1,146 @@
-﻿var UATOOLS = (function (UATOOLS) {
+var uaTools = (function (uaTools) {
     var currentUA = navigator.userAgent || "";
     var currentLowerUA = currentUA.toLowerCase();
+
+    uaTools.OPERATING_SYSTEMS = {
+        WINDOWS_PHONE: "Windows Phone",
+        WINDOWS: "Windows",
+        ANDROID: "Android",
+        IOS: "iOS",
+        BLACKBERRY: "BlackBerry",
+        KINDLE: "Kindle",
+        MACINTOSH: "Macintosh",
+        LINUX: "Linux",
+        OPENBSD: "OpenBSD",
+        FIREFOX_OS: "Firefox OS",
+        UNKNOWN: "Unknown operating system"
+    };
+
+    uaTools.STORES = {
+        WINDOWS_PHONE_STORE: "Windows Phone Store",
+        WINDOWS_STORE: "Windows Store",
+        ITUNES: "iTunes",
+        GOOGLE_PLAY: "Google Play"
+    };
+
+    if (Object.freeze) {
+        Object.freeze(uaTools.OPERATING_SYSTEMS);
+        Object.freeze(uaTools.STORES);
+    }
+    if (Object.seal) {
+        Object.seal(uaTools.OPERATING_SYSTEMS);
+        Object.seal(uaTools.STORES);
+    }
+    if (Object.preventExtensions) {
+        Object.preventExtensions(uaTools.OPERATING_SYSTEMS);
+        Object.preventExtensions(uaTools.STORES);
+    }
 
     function deprecated(newFunction) {
         return function () {
             if (console && console.warn) {
-                console.log('This method is deprecated!');
+                console.warn('This method is deprecated!');
             }
             return newFunction.call(this, arguments);
         }
     }
 
-    UATOOLS.isTablet = function () {
+    uaTools.isTablet = function () {
         return currentLowerUA.indexOf("tablet") >= 0;
     };
-    UATOOLS.IsTablet = deprecated(UATOOLS.isTablet);
+    uaTools.IsTablet = deprecated(uaTools.isTablet);
 
-    UATOOLS.isMobile = function () {
+    uaTools.isMobile = function () {
         return currentLowerUA.indexOf("mobile") >= 0;
     };
-    UATOOLS.IsMobile = deprecated(UATOOLS.isMobile);
+    uaTools.IsMobile = deprecated(uaTools.isMobile);
 
-    UATOOLS.getUserAgentString = function () {
+    uaTools.getUserAgentString = function () {
         return currentUA;
     };
-    UATOOLS.GetUserAgentString = deprecated(UATOOLS.getUserAgentString);
+    uaTools.GetUserAgentString = deprecated(uaTools.getUserAgentString);
 
-    UATOOLS.getStore = function () {
+    uaTools.getStore = function () {
         // Features testing first
         if (window.chrome && window.chrome.app) {
-            return "Google Play";
+            return uaTools.STORES.GOOGLE_PLAY;
         }
 
         // Get OS then
-        var os = UATOOLS.getOperatingSystem();
+        var os = uaTools.getOperatingSystem();
 
         switch (os) {
-            case "Windows Phone":
-                return "Windows Phone Store";
-            case "Windows":
-                return "Windows Store";
-            case "iOS":
-                return "iTunes"; // Smart App Banner should be used as well
+            case uaTools.OPERATING_SYSTEMS.WINDOWS_PHONE:
+                return uaTools.STORES.WINDOWS_PHONE_STORE;
+            case uaTools.OPERATING_SYSTEMS.WINDOWS:
+                return uaTools.STORES.WINDOWS_STORE;
+            case uaTools.OPERATING_SYSTEMS.IOS:
+                return uaTools.STORES.ITUNES;
             default:
                 return os;
         }
     };
-    UATOOLS.GetStore = deprecated(UATOOLS.getStore);
+    uaTools.GetStore = deprecated(uaTools.getStore);
 
-    UATOOLS.getOperatingSystem = function () {
-        // Windows Phone
+    uaTools.getOperatingSystem = function () {
         if (currentLowerUA.indexOf("windows phone") >= 0) {
-            return "Windows Phone";
+            return uaTools.OPERATING_SYSTEMS.WINDOWS_PHONE;
         }
 
-        // Windows
         if (currentLowerUA.indexOf("windows") >= 0) {
-            return "Windows";
+            return uaTools.OPERATING_SYSTEMS.WINDOWS;
         }
 
-        // Android
         if (currentLowerUA.indexOf("android") >= 0) {
-            return "Android";
+            return uaTools.OPERATING_SYSTEMS.ANDROID;
         }
 
-        // iOS
         if (currentLowerUA.indexOf("apple-i") >= 0) {
-            return "iOS";
+            return uaTools.OPERATING_SYSTEMS.IOS;
         }
 
         if (currentLowerUA.indexOf("iphone") >= 0) {
-            return "iOS";
+            return uaTools.OPERATING_SYSTEMS.IOS;
         }
 
         if (currentLowerUA.indexOf("ipad") >= 0) {
-            return "iOS";
+            return uaTools.OPERATING_SYSTEMS.IOS;
         }
 
-        // BlackBerry
         if (currentLowerUA.indexOf("blackberry") >= 0) {
-            return "BlackBerry";
+            return uaTools.OPERATING_SYSTEMS.BLACKBERRY;
         }
 
-        // BlackBerry
         if (currentLowerUA.indexOf("(bb") >= 0) {
-            return "BlackBerry";
+            return uaTools.OPERATING_SYSTEMS.BLACKBERRY;
         }
 
-        // Kindle
         if (currentLowerUA.indexOf("kindle") >= 0) {
-            return "Kindle";
+            return uaTools.OPERATING_SYSTEMS.KINDLE;
         }
 
-        // Macintosh
         if (currentLowerUA.indexOf("macintosh") >= 0) {
-            return "Macintosh";
+            return uaTools.OPERATING_SYSTEMS.MACINTOSH;
         }
 
-        // Linux
         if (currentLowerUA.indexOf("linux") >= 0) {
-            return "Linux";
+            return uaTools.OPERATING_SYSTEMS.LINUX;
         }
 
-        // OpenBSD
         if (currentLowerUA.indexOf("openbsd") >= 0) {
-            return "OpenBSD";
+            return uaTools.OPERATING_SYSTEMS.OPENBSD;
         }
 
-        // Firefox OS
         if (currentLowerUA.indexOf("firefox") >= 0) {
-            return "Firefox OS"; // Web is the plaform
+            return uaTools.OPERATING_SYSTEMS.FIREFOX_OS;
         }
 
-        return "Unknown operating system";
+        return uaTools.OPERATING_SYSTEMS.UNKNOWN;
     };
-    UATOOLS.GetOperatingSystem = deprecated(UATOOLS.getOperatingSystem);
+    uaTools.GetOperatingSystem = deprecated(uaTools.getOperatingSystem);
 
-    return UATOOLS;
-}(UATOOLS || {}));
+    return uaTools;
+}(uaTools || {}));
+
+//deprecated
+var UATOOLS = uaTools;

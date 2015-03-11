@@ -87,10 +87,10 @@
     </div>
 
     <script>
-        document.getElementById("currentUA").innerHTML = UATOOLS.getUserAgentString();
-        document.getElementById("isMobile").innerHTML = UATOOLS.isTablet() ? "Running on tablet device" : UATOOLS.isMobile() ? "Running on mobile device" : "Running on desktop device";
-        document.getElementById("store").innerHTML = UATOOLS.getStore();
-        document.getElementById("OS").innerHTML = UATOOLS.getOperatingSystem();
+        document.getElementById("currentUA").innerHTML = uaTools.getUserAgentString();
+        document.getElementById("isMobile").innerHTML = uaTools.isTablet() ? "Running on tablet device" : uaTools.isMobile() ? "Running on mobile device" : "Running on desktop device";
+        document.getElementById("store").innerHTML = uaTools.getStore();
+        document.getElementById("OS").innerHTML = uaTools.getOperatingSystem();
     </script>
 </body>
 </html>
