@@ -12,3 +12,6 @@ Once referenced, uatools.js allows you to call:
 * uaTools.isTablet()
 
 Feel free to contribute to get even more accurate results!
+
+## Looking for older version?
+Legacy version can be found on branch **version-1.0**.
