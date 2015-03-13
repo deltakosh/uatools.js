@@ -26,12 +26,8 @@ var uaTools = (function (uaTools) {
     if (Object.freeze) {
         Object.freeze(uaTools.OPERATING_SYSTEMS);
         Object.freeze(uaTools.STORES);
-    }
-    if (Object.seal) {
         Object.seal(uaTools.OPERATING_SYSTEMS);
         Object.seal(uaTools.STORES);
-    }
-    if (Object.preventExtensions) {
         Object.preventExtensions(uaTools.OPERATING_SYSTEMS);
         Object.preventExtensions(uaTools.STORES);
     }

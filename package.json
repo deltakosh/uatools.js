@@ -1,0 +1,26 @@
+{
+  "name": "uatools.js",
+  "version": "1.0.0",
+  "description": "A set of tools to help you analyse user agent strings.",
+  "main": "uatools.js",
+  "scripts": {
+    "build": "node_modules/uglify/bin/uglify  -s ./uatools.js -o ./uatools.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mmiszy/uatools.js.git"
+  },
+  "keywords": [
+    "sniffing",
+    "useragent"
+  ],
+  "author": "",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/mmiszy/uatools.js/issues"
+  },
+  "homepage": "https://github.com/mmiszy/uatools.js",
+  "dependencies": {
+    "uglify": "^0.1.1"
+  }
+}
