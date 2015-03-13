@@ -32,29 +32,17 @@ var uaTools = (function (uaTools) {
         Object.preventExtensions(uaTools.STORES);
     }
 
-    function deprecated(newFunction) {
-        return function () {
-            if (console && console.warn) {
-                console.warn('This method is deprecated!');
-            }
-            return newFunction.call(this, arguments);
-        }
-    }
-
     uaTools.isTablet = function () {
         return currentLowerUA.indexOf("tablet") >= 0;
     };
-    uaTools.IsTablet = deprecated(uaTools.isTablet);
 
     uaTools.isMobile = function () {
         return currentLowerUA.indexOf("mobile") >= 0;
     };
-    uaTools.IsMobile = deprecated(uaTools.isMobile);
 
     uaTools.getUserAgentString = function () {
         return currentUA;
     };
-    uaTools.GetUserAgentString = deprecated(uaTools.getUserAgentString);
 
     uaTools.getStore = function () {
         // Features testing first
@@ -76,7 +64,6 @@ var uaTools = (function (uaTools) {
                 return os;
         }
     };
-    uaTools.GetStore = deprecated(uaTools.getStore);
 
     uaTools.getOperatingSystem = function () {
         if (currentLowerUA.indexOf("windows phone") >= 0) {
@@ -133,10 +120,6 @@ var uaTools = (function (uaTools) {
 
         return uaTools.OPERATING_SYSTEMS.UNKNOWN;
     };
-    uaTools.GetOperatingSystem = deprecated(uaTools.getOperatingSystem);
 
     return uaTools;
 }(uaTools || {}));
-
-//deprecated
-var UATOOLS = uaTools;
