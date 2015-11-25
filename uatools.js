@@ -19,13 +19,13 @@
     }
 
     UATOOLS.GetStore = function () {
-        // Features testing first
-        if (window.chrome && window.chrome.app) {
-            return "Google Play";
-        }
-
         // Get OS then
         var os = UATOOLS.GetOperatingSystem();
+        
+        // Features testing first
+        if (window.chrome && window.chrome.app && os !== "Windows Phone") {
+            return "Google Play";
+        }
 
         switch (os) {
             case "Windows Phone":
