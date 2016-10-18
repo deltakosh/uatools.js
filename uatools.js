@@ -105,4 +105,63 @@
 
         return "Unknown operating system";
     }
+
+    UATOOLS.IsOpera = function () {
+        // Opera 8.0+
+        return (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    }
+
+    UATOOLS.IsFirefox = function () {
+        // Firefox 1.0+
+        return typeof InstallTrigger !== 'undefined';
+    }
+
+    UATOOLS.IsSafari = function () {
+        // Safari <= 9 "[object HTMLElementConstructor]" 
+        return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    }
+
+    UATOOLS.IsIE = function () {
+        // Internet Explorer 6-11
+        return /*@cc_on!@*/false || !!document.documentMode;
+    }
+
+    UATOOLS.IsEdge = function () {
+        // Edge 20+
+        return !UATOOLS.IsIE() && !!window.StyleMedia;
+    }
+
+    UATOOLS.IsChrome = function () {
+        // Chrome 1+
+        return !!window.chrome && !!window.chrome.webstore;
+    }
+
+    UATOOLS.IsBlink = function () {
+        // Blink engine detection
+        return (UATOOLS.IsChrome() || UATOOLS.IsOpera()) && !!window.CSS;
+    }
+
+     // Features
+    UATOOLS.IsWindowsVersionEqualOrAboveRS1 = function () {
+        // is it Windows 10 ?
+        if (currentLowerUA.indexOf("windows nt 10") < 0) {
+            return false;
+        }
+
+        //Hack using canvas and font size which was handled differently previous to RS1 (Lower than 1607)
+        var context = document.createElement('canvas').getContext('2d');
+
+        context.font = '64px Segoe UI Emoji';
+        var width = context.measureText('\uD83D\uDC31\u200D\uD83D\uDC64').width;
+
+        if (UATOOLS.IsChrome() || UATOOLS.IsFirefox() || UATOOLS.IsOpera() || UATOOLS.IsEdge()) {
+            return width <= 90;
+        }
+        else if(UATOOLS.IsIE()){
+            return width > 128;
+        }
+        
+        return false;
+    }
+
 })(UATOOLS || (UATOOLS = {}));
