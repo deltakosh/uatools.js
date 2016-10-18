@@ -9,6 +9,7 @@ Once referenced, uatools.js allows you to call:
 * UATOOLS.GetOperatingSystem()
 * UATOOLS.IsMobile()
 * UATOOLS.IsTablet()
+* UATOOLS.IsWindowsVersionEqualOrAboveRS1()
 
 Feel free to contribute to get even more accurate results!
 
