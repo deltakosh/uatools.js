@@ -105,4 +105,40 @@
 
         return "Unknown operating system";
     }
+
+    UATOOLS.IsOpera = function () {
+        // Opera 8.0+
+        return (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    }
+
+    UATOOLS.IsFirefox = function () {
+        // Firefox 1.0+
+        return typeof InstallTrigger !== 'undefined';
+    }
+
+    UATOOLS.IsSafari = function () {
+        // Safari <= 9 "[object HTMLElementConstructor]" 
+        return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    }
+
+    UATOOLS.IsIE = function () {
+        // Internet Explorer 6-11
+        return /*@cc_on!@*/false || !!document.documentMode;
+    }
+
+    UATOOLS.IsEdge = function () {
+        // Edge 20+
+        return !UATOOLS.IsIE() && !!window.StyleMedia;
+    }
+
+    UATOOLS.IsChrome = function () {
+        // Chrome 1+
+        return !!window.chrome && !!window.chrome.webstore;
+    }
+
+    UATOOLS.IsBlink = function () {
+        // Blink engine detection
+        return (UATOOLS.IsChrome() || UATOOLS.IsOpera()) && !!window.CSS;
+    }
+
 })(UATOOLS || (UATOOLS = {}));
