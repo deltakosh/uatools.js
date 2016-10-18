@@ -141,4 +141,33 @@
         return (UATOOLS.IsChrome() || UATOOLS.IsOpera()) && !!window.CSS;
     }
 
+     // Features
+    UATOOLS.IsWindowsVersionEqualOrAboveRS1 = function () {
+        // is it Windows 10 ?
+        if (currentLowerUA.indexOf("windows nt 10") < 0) {
+            return false;
+        }
+
+        //Hack using canvas and font size which was handled differently previous to RS1 (Lower than 1607)
+        var context = document.createElement('canvas').getContext('2d');
+
+        context.font = '64px Segoe UI Emoji'
+        var width = context.measureText('\uD83D\uDC31\u200D\uD83D\uDC64').width
+
+        if (UATOOLS.IsChrome() || UATOOLS.IsFirefox() || UATOOLS.IsOpera() || UATOOLS.IsEdge()) {
+            if (width <= 90) {
+                return true;
+            } 
+            return false;
+        }
+        else if(UATOOLS.IsIE()){
+            if (width > 128) {
+                return true;
+            } 
+            return false;
+        }
+        
+        return false;
+    }
+
 })(UATOOLS || (UATOOLS = {}));
