@@ -141,8 +141,8 @@
         return (UATOOLS.IsChrome() || UATOOLS.IsOpera()) && !!window.CSS;
     }
 
-     // Features
-    UATOOLS.IsWindowsVersionEqualOrAboveRS1 = function () {
+     // Experimental
+    UATOOLS.IsWindowsAnniversaryUpdateOrAbove = function () {
         // is it Windows 10 ?
         if (currentLowerUA.indexOf("windows nt 10") < 0) {
             return false;
