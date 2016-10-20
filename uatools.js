@@ -154,8 +154,12 @@
         context.font = '64px Segoe UI Emoji';
         var width = context.measureText('\uD83D\uDC31\u200D\uD83D\uDC64').width;
 
-        if (UATOOLS.IsChrome() || UATOOLS.IsFirefox() || UATOOLS.IsOpera() || UATOOLS.IsEdge()) {
+        if (UATOOLS.IsChrome() || UATOOLS.IsFirefox() || UATOOLS.IsOpera()) {
             return width <= 90;
+        }
+        else if(UATOOLS.IsEdge()){
+            var windowsBuildNumber = currentLowerUA.match("edge/[0-9]+.([0-9]+)")[1];
+            return windowsBuildNumber >= 14393
         }
         else if(UATOOLS.IsIE()){
             return width > 128;
