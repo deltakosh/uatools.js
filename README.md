@@ -19,7 +19,11 @@ First step: reference the uatools.js file.
 
 Then add an anchor :
 ``` 
-<a class="winstore-link" data-winstore-id="9wzdncrfj364" data-winstore-cid="test" data-winstore-badge-size="small"></a>
+<a  class="winstore-link" 
+    data-winstore-id="9wzdncrfj364" 
+    data-winstore-cid="test" 
+    data-winstore-badge-size="small">
+</a>
 ```
 
 Parameters are:
