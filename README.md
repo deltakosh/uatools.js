@@ -11,6 +11,7 @@ Once referenced, uatools.js allows you to call:
 * UATOOLS.IsTablet()
 
 **Experimental:**
+==========
 * UATOOLS.IsWindowsAnniversaryUpdateOrAbove()
 
 Or use the windows store button which only appear when your website is running on Windows Anniversary version or bigger.
