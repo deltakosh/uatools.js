@@ -32,6 +32,7 @@ Parameters are:
 - ```data-winstore-id="YOURAPPIDINSTORE"```: **mandatory** for the tool to create the link
 - ```data-winstore-cid="YOURCAMPAINID"```: **optional** for the tool to create the link
 - ```data-winstore-badge-size="small"```: **optional** size of the generated button (small|medium|large), default = medium
+- ```data-winstore-appname="YOURAPPNAME"```: **optional** the name of your app in the store
 
 You can have as many of them as you want our your page. 
 
