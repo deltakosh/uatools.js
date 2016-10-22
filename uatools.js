@@ -196,7 +196,11 @@
                 var size = "medium";
                 if(storeLink.attributes["data-winstore-badge-size"]) 
                     size = storeLink.attributes["data-winstore-badge-size"].value || size;
-            
+                
+                var appname = "";
+                if(storeLink.attributes["data-winstore-appname"]) 
+                    appname = storeLink.attributes["data-winstore-appname"].value + "/";
+        
                 var img = document.createElement("img");
                 img.src = "https://assets.windowsphone.com/f2f77ec7-9ba9-4850-9ebe-77e366d08adc/English_Get_it_Win_10_InvariantCulture_Default.png";
                 img.alt = "Get it on Windows 10";
@@ -215,10 +219,10 @@
                 }
 
                 storeLink.appendChild(img);
-                storeLink.href = "https://www.microsoft.com/store/apps/" + storeid;
+                storeLink.href = "https://www.microsoft.com/store/apps/" + appname + storeid;
 
                 if(campainid)
-                    storeLink.href += "&cid=" + campainid;
+                    storeLink.href += "?cid=" + campainid;
 
                 campainid = undefined;
                 storeid = undefined;
